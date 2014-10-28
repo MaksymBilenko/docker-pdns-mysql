@@ -17,6 +17,7 @@ RUN apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN echo "#!/bin/bash \n\
     set -e \n\
     mv /etc/powerdns/pdns.d/pdns.local.gmysql.conf{,_old} \n\
+    echo launch=gmysql >> /etc/powerdns/pdns.d/pdns.local.gmysql.conf \n\
     echo gmysql-host=\$MYSQL_HOST >> /etc/powerdns/pdns.d/pdns.local.gmysql.conf \n\
     echo gmysql-port=\$MYSQL_PORT >> /etc/powerdns/pdns.d/pdns.local.gmysql.conf \n\
     echo gmysql-dbname=\$MYSQL_DBNAME >> /etc/powerdns/pdns.d/pdns.local.gmysql.conf \n\
