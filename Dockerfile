@@ -6,7 +6,7 @@ ENV MYSQL_DBNAME pdns
 ENV MYSQL_DBUSER pdns
 ENV MYSQL_DBPASS pdns
 ENV RECURSOR 8.8.8.8
-ENV ALLOW_RECURSION_MASK 0.0.0.0\/0
+ENV ALLOW_RECURSION_MASK 0.0.0.0/0
 ENV POWERDNS_JENKINS https://autotest.powerdns.com/job/auth-git-semistatic-deb-amd64/lastSuccessfulBuild
 ENV EXPERIMENTAL_JSON_INTERFACE yes
 ENV WEBSERVER yes
@@ -21,6 +21,7 @@ RUN apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN echo "#!/bin/bash \n\
     set -e \n\
     mv /etc/powerdns/pdns.conf{,_old} \n\
+    echo launch=gmysql >> /etc/powerdns/pdns.conf \n\
     echo gmysql-host=\$MYSQL_HOST >> /etc/powerdns/pdns.conf \n\
     echo gmysql-port=\$MYSQL_PORT >> /etc/powerdns/pdns.conf \n\
     echo gmysql-dbname=\$MYSQL_DBNAME >> /etc/powerdns/pdns.conf \n\
