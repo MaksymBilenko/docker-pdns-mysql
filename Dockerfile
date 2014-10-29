@@ -9,6 +9,7 @@ ENV RECURSOR 8.8.8.8
 ENV ALLOW_RECURSION_MASK 0.0.0.0/0
 ENV POWERDNS_JENKINS https://autotest.powerdns.com/job/auth-git-semistatic-deb-amd64/lastSuccessfulBuild
 ENV EXPERIMENTAL_JSON_INTERFACE yes
+ENV EXPERIMENTAL_JSON_API_KEY changeme
 ENV WEBSERVER yes
 ENV WEBSERVER_PASSWORD changeme
 
@@ -30,6 +31,7 @@ RUN echo "#!/bin/bash \n\
     echo recursor=\$RECURSOR >> /etc/powerdns/pdns.conf \n\
     echo allow-recursion=\$ALLOW_RECURSION_MASK >> /etc/powerdns/pdns.conf \n\
     echo experimental-json-interface=\$EXPERIMENTAL_JSON_INTERFACE >> /etc/powerdns/pdns.conf \n\
+    echo experimental-api-key=\$EXPERIMENTAL_JSON_API_KEY >> /etc/powerdns/pdns.conf \n\
     echo webserver=\$WEBSERVER >> /etc/powerdns/pdns.conf \n\
     echo webserver-password=\$WEBSERVER_PASSWORD >> /etc/powerdns/pdns.conf \n\
     echo webserver-address=0.0.0.0 >> /etc/powerdns/pdns.conf \n\
