@@ -14,5 +14,8 @@
     echo webserver=$WEBSERVER >> /etc/powerdns/pdns.conf 
     echo webserver-password=$WEBSERVER_PASSWORD >> /etc/powerdns/pdns.conf 
     echo webserver-address=0.0.0.0 >> /etc/powerdns/pdns.conf 
+if [ -f /mnt/recursors.conf ]; then
+    echo forward-zones-file=/mnt/recursors.conf >> /etc/powerdns/pdns.conf
+fi
     cat /etc/powerdns/pdns.conf 
     exec "$@"
